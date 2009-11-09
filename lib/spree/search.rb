@@ -1,5 +1,6 @@
 module Spree::Search
   def retrieve_products
+    Spree::Config.searcher.prepare(params)
     # taxon might be already set if this method is called from TaxonsController#show
     @taxon ||= Taxon.find_by_id(params[:taxon]) unless params[:taxon].blank?
     # add taxon id to params for searcher
