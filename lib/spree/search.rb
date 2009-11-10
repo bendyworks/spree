@@ -1,6 +1,5 @@
 module Spree::Search
   def retrieve_products
-    Spree::Config.searcher.prepare(params)
     # taxon might be already set if this method is called from TaxonsController#show
     @taxon ||= Taxon.find_by_id(params[:taxon]) unless params[:taxon].blank?
     # add taxon id to params for searcher
@@ -9,6 +8,9 @@ module Spree::Search
     per_page = params[:per_page] || Spree::Config[:products_per_page]
     params[:per_page] = per_page
     curr_page = Spree::Config.searcher.manage_pagination ? 1 : params[:page]
+    # Prepare a search within the parameters
+    Spree::Config.searcher.prepare(params)
+
     # Prepare a search within the parameters
     Spree::Config.searcher.prepare(params)
 

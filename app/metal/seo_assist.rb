@@ -2,7 +2,7 @@
 require(File.dirname(__FILE__) + "/../../config/environment") unless defined?(Rails)
 
 # Make redirects for SEO needs
-class SeoAssist  
+class SeoAssist
   
   def self.call(env)
     request = Rack::Request.new(env)
