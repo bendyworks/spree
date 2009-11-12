@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <% hook :admin_inside_head do %>
-  	<%= render :partial => "shared/admin_head" %>
-	<% end %>
+    <%= render :partial => "shared/admin_head" %>
+  <% end %>
 </head>
 <body class='yui-skin-sam admin'>
 <!--[if IE 7]>
@@ -40,7 +40,6 @@
 
     <div class="<%= 'with-sidebar ' unless @content_for_sidebar.blank? %> clear" id="content">
 
-
       <% if flash[:error] %>
       <div class="flash error"><%= flash[:error] %></div>
       <% end %>
@@ -71,4 +70,3 @@
 <%= javascript_include_tag 'admin/unobtrusive_handlers' %>
 </body>
 </html>
-
