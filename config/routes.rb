@@ -69,6 +69,11 @@ ActionController::Routing::Routes.draw do |map|
     :action => 'show'
   }
 
+  map.taxons_p_search '/t/*taxon_path/p/:id', {
+    :controller => 'products',
+    :action => 'show'
+  }
+
   # route globbing for pretty nested taxon and product paths
   map.nested_taxons '/t/*id', :controller => 'taxons', :action => 'show'
 
