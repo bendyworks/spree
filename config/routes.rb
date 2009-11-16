@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
     order.resources :shipments, :member => {:shipping_method => :get}
     order.resource :checkout, :member => {:register => :any}
   end
-  #map.resources :shipments, :member => {:shipping_method => :any}
+  # map.resources :shipments, :member => {:shipping_method => :any}
 
   # Search routes
   map.simple_search '/s/*product_group_query', :controller => 'products', :action => 'index'
