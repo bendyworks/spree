@@ -19,7 +19,9 @@ db/*.sql
 db/*.sqlite3*
 db/schema.rb
 doc/**/*
+doc/*
 lib/products_index_profiler.rb
+lib/tasks/railroad_diagrams.rake
 log/*.log
 pkg
 public/assets
