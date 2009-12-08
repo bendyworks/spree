@@ -1,6 +1,7 @@
 \#*
 **/*.db
 *~
+*.tmproj
 .#*
 .DS_Store
 .dotest
