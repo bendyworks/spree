@@ -11,12 +11,6 @@ module Spree::Search
     # Prepare a search within the parameters
     Spree::Config.searcher.prepare(params)
 
-    # Prepare a search within the parameters
-    Spree::Config.searcher.prepare(params)
-
-    # Prepare a search within the parameters
-    Spree::Config.searcher.prepare(params)
-
     if params[:product_group_name]
       @product_group = ProductGroup.find_by_permalink(params[:product_group_name])
     elsif params[:product_group_query]
