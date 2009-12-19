@@ -67,14 +67,23 @@ class CheckoutsController < Spree::BaseController
   private
   
   # Calls edit hooks registered for the current step  
-  def edit_hooks  
+  def edit_hooks
+    update_order
     edit_hook @checkout.state.to_sym 
   end
   # Calls update hooks registered for the current step  
   def update_hooks
+    update_order
     update_hook @checkout.state.to_sym 
   end
-  
+
+  def update_order
+    @checkout.order.update_adjustments
+    @checkout.order.reload
+    @order = @checkout.order
+    @order.update_totals
+  end
+
   def complete_checkout
     complete_order
     order_params = {:checkout_complete => true}

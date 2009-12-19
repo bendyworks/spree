@@ -19,7 +19,22 @@ class Shipment < ActiveRecord::Base
 
   def create_shipping_charge
     if shipping_method
-      self.shipping_charge ||= ShippingCharge.create({
+      shipping_attrs = {
+          :order => order,
+          :description => "#{I18n.t(:shipping)} (#{shipping_method.name})",
+          :adjustment_source => self,
+        }
+      if self.shipping_charge
+        self.shipping_charge.update_attributes(shipping_attrs)
+      else
+        self.shipping_charge = ShippingCharge.create(shipping_attrs)
+      end
+    end
+  end
+
+  def update_shipping_charge
+    if shipping_method
+      self.shipping_charge.update_attributes({
           :order => order,
           :description => "#{I18n.t(:shipping)} (#{shipping_method.name})",
           :adjustment_source => self,
